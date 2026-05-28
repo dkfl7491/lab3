@@ -4,54 +4,43 @@
 
 using namespace std;
 
-// Функция
 double f(double x)
 {
-    if (x < -2)
-        return x * x + 1;
-    else if (x <= 2)
-        return sin(x);
+    if (x < -4)
+    {
+        // Левая ветка
+        return -sqrt(-x - 4);
+    }
+    else if (x <= 4)
+    {
+        // Средняя часть
+        return -sin(M_PI * x / 4.0);
+    }
     else
-        return sqrt(x);
+    {
+        // Правая ветка
+        return sqrt(x - 4) + 1;
+    }
 }
 
 int main()
 {
-    double xStart;
-    double xEnd;
-    double dx;
-
-    cout << "Введите X начальное: ";
-    cin >> xStart;
-
-    cout << "Введите X конечное: ";
-    cin >> xEnd;
-
-    cout << "Введите шаг: ";
-    cin >> dx;
-
-    // Проверка шага
-    if (dx <= 0)
-    {
-        cout << "Ошибка: шаг должен быть больше 0";
-
-        return 0;
-    }
+    double xStart = -6;
+    double xEnd = 6;
+    double dx = 0.5;
 
     cout << fixed << setprecision(3);
 
-    cout << "\n---------------------\n";
+    cout << "---------------------\n";
     cout << "|    x    |    y    |\n";
     cout << "---------------------\n";
 
     for (double x = xStart; x <= xEnd; x += dx)
     {
-        double y = f(x);
-
         cout << "| "
              << setw(7) << x
              << " | "
-             << setw(7) << y
+             << setw(7) << f(x)
              << " |\n";
     }
 
