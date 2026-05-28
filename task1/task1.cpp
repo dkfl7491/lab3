@@ -8,30 +8,37 @@ double f(double x)
 {
     if (x < -4)
     {
-        // Левая ветка
-        return -sqrt(-x - 4);
+        // Левая ветка графика
+        return -sqrt(-x - 4) - 1;
     }
     else if (x <= 4)
     {
-        // Средняя часть
+        // Средняя часть графика
         return -sin(M_PI * x / 4.0);
     }
     else
     {
-        // Правая ветка
+        // Правая ветка графика
         return sqrt(x - 4) + 1;
     }
 }
 
 int main()
 {
-    double xStart = -6;
-    double xEnd = 6;
-    double dx = 0.5;
+    double xStart, xEnd, dx;
+
+    cout << "Введите начало интервала: ";
+    cin >> xStart;
+
+    cout << "Введите конец интервала: ";
+    cin >> xEnd;
+
+    cout << "Введите шаг: ";
+    cin >> dx;
 
     cout << fixed << setprecision(3);
 
-    cout << "---------------------\n";
+    cout << "\n---------------------\n";
     cout << "|    x    |    y    |\n";
     cout << "---------------------\n";
 
