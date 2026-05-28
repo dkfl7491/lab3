@@ -5,48 +5,35 @@ import (
 	"math"
 )
 
-// Функция
 func f(x float64) float64 {
 
-	if x < -2 {
-		return x*x + 1
-	} else if x <= 2 {
-		return math.Sin(x)
+	if x < -4 {
+		// Левая ветка
+		return -math.Sqrt(-x - 4)
+	} else if x <= 4 {
+		// Средняя часть
+		return -math.Sin(math.Pi * x / 4.0)
 	} else {
-		return math.Sqrt(x)
+		// Правая ветка
+		return math.Sqrt(x-4) + 1
 	}
 }
 
 func main() {
 
-	var xStart float64
-	var xEnd float64
-	var dx float64
+	xStart := -6.0
+	xEnd := 6.0
+	dx := 0.5
 
-	fmt.Print("Введите X начальное: ")
-	fmt.Scan(&xStart)
-
-	fmt.Print("Введите X конечное: ")
-	fmt.Scan(&xEnd)
-
-	fmt.Print("Введите шаг: ")
-	fmt.Scan(&dx)
-
-	// Проверка шага
-	if dx <= 0 {
-		fmt.Println("Ошибка: шаг должен быть больше 0")
-		return
-	}
-
-	fmt.Println("\n---------------------")
+	fmt.Println("---------------------")
 	fmt.Println("|    x    |    y    |")
 	fmt.Println("---------------------")
 
 	for x := xStart; x <= xEnd; x += dx {
 
-		y := f(x)
-
-		fmt.Printf("| %7.3f | %7.3f |\n", x, y)
+		fmt.Printf("| %7.3f | %7.3f |\n",
+			x,
+			f(x))
 	}
 
 	fmt.Println("---------------------")
